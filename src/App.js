@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Compoents
 import Nav from "./compoents/Nav";
 import StockSearch from "./pages/SockSearch";
-import About from "./compoents/About";
+import About from "./pages/About";
 
 function testbtn() {
   axios
