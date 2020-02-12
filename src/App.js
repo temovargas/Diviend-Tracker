@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Compoents
 import Nav from "./compoents/Nav";
-import StockSearch from "./compoents/SockSearch";
+import StockSearch from "./pages/SockSearch";
 import About from "./compoents/About";
 
 function testbtn() {
