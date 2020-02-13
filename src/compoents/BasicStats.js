@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 const BasicStats = () => (
   <div className="basic-stats">
     <ul>
@@ -16,6 +16,6 @@ const BasicStats = () => (
       <li>CEO:</li>
     </ul>
   </div>
-);
+)
 
-export default BasicStats;
+export default BasicStats

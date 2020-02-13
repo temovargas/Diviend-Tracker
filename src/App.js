@@ -1,10 +1,10 @@
-import React from "react";
-import axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react'
+import axios from 'axios'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // Compoents
-import Nav from "./compoents/Nav";
-import StockSearch from "./pages/SockSearch";
-import About from "./pages/About";
+import Nav from './compoents/Nav'
+import StockSearch from './pages/SockSearch'
+import About from './pages/About'
 
 function testbtn() {
   axios
@@ -12,10 +12,10 @@ function testbtn() {
       `https://cloud.iexapis.com/stable/data-points/T/DIVIDENDYIELD?token=${process.env.REACT_APP_IXE_API_KEY}`
     )
     .then(data => {
-      console.log("====================================");
-      console.log(data.data);
-      console.log("====================================");
-    });
+      console.log('====================================')
+      console.log(data.data)
+      console.log('====================================')
+    })
 }
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

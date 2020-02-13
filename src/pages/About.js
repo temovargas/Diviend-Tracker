@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Nav = () => (
   <section className="about">
@@ -9,6 +9,6 @@ const Nav = () => (
       have any ideas that will help this project improve let me know.
     </p>
   </section>
-);
+)
 
-export default Nav;
+export default Nav

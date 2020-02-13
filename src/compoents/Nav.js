@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Nav = () => (
   <nav>
@@ -13,6 +13,6 @@ const Nav = () => (
       <NavLink to="/about">About</NavLink>
     </li>
   </nav>
-);
+)
 
-export default Nav;
+export default Nav

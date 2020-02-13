@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const News = props => {
-  const date = new Date(props.date).toDateString();
+  const date = new Date(props.date).toDateString()
   return (
     <li className="artical">
       <a href={props.url} className="artical_link">
@@ -18,7 +18,7 @@ const News = props => {
         </div>
       </a>
     </li>
-  );
-};
+  )
+}
 
-export default News;
+export default News

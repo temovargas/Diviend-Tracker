@@ -1,32 +1,32 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react'
+import axios from 'axios'
 // import components
-import NewsList from "../compoents/NewsList";
+import NewsList from '../compoents/NewsList'
 
 class SockSearch extends Component {
-  state = { inputText: "", company: {}, news: [], quote: {} };
+  state = { inputText: '', company: {}, news: [], quote: {} }
 
   fetchData = event => {
-    event.preventDefault();
+    event.preventDefault()
 
     axios
       .get(
         `https://cloud.iexapis.com/stable/stock/${this.state.inputText}/batch?types=quote,company,news&token=${process.env.REACT_APP_IXE_API_KEY}`
       )
       .then(res => {
-        console.log(res.data);
+        console.log(res.data)
         this.setState({
           ...res.data
-        });
-      });
-  };
+        })
+      })
+  }
 
   handleChange = e => {
     this.setState({
       ...this.state,
       inputText: e.target.value
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -45,8 +45,8 @@ class SockSearch extends Component {
         </form>
         <NewsList news={this.state.news} />
       </section>
-    );
+    )
   }
 }
 
-export default SockSearch;
+export default SockSearch
