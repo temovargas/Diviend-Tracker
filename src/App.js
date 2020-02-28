@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Nav from './compoents/Nav'
 import StockSearch from './pages/SockSearch'
 import About from './pages/About'
-
+import Home from './pages/Home'
 function testbtn() {
   axios
     .get(
@@ -28,7 +28,9 @@ function App() {
         </header>
         {/* Routes */}
         <Switch>
-          <Route exact path="/" to="/"></Route>
+          <Route exact path="/" to="/">
+            <Home />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
