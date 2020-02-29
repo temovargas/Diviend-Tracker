@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
+import HoldingsList from '../compoents/HoldingsList'
 export default class Home extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +34,16 @@ export default class Home extends Component {
 
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal })
+  }
+
+  handleHoldingsRender = props => {
+    const { holdings } = this.state
+    // if user has any holdings render the list of companies
+    if (holdings.length !== 0) {
+      return <HoldingsList />
+    } else {
+      return <p>Please add a new position to your portfolio</p>
+    }
   }
 
   handleInputChange = evt => {
@@ -85,7 +96,7 @@ export default class Home extends Component {
               />
               <Input
                 name="avgPricePaidInput"
-                title="Avg Price Paid"
+                title="Avg Prigice Paid"
                 type="text"
                 placeholder="Price"
                 handleChange={this.handleInputChange}
@@ -97,6 +108,7 @@ export default class Home extends Component {
             </FormContainer>
           </Modal>
         ) : null}
+        {this.handleHoldingsRender()}
         <button onClick={this.toggleModal}>Add holdings</button>
       </div>
     )
