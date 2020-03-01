@@ -36,11 +36,11 @@ export default class Home extends Component {
     this.setState({ showModal: !this.state.showModal })
   }
 
-  handleHoldingsRender = props => {
+  handleHoldingsRender = () => {
     const { holdings } = this.state
     // if user has any holdings render the list of companies
     if (holdings.length !== 0) {
-      return <HoldingsList />
+      return <HoldingsList holdings={this.state.holdings} />
     } else {
       return <p>Please add a new position to your portfolio</p>
     }
