@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { formatDividend } from '../Util/herlper'
+
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
@@ -17,18 +17,18 @@ export default class Home extends Component {
       holdings: [
         {
           ticker: 'cci',
-          shares: 4,
-          avgPricePaid: 145
+          shares: '4',
+          avgPricePaid: '145'
         },
         {
           ticker: 'o',
-          shares: 4,
-          avgPricePaid: 145
+          shares: '4',
+          avgPricePaid: '145'
         },
         {
           ticker: 't',
-          shares: 4,
-          avgPricePaid: 145
+          shares: '4',
+          avgPricePaid: '145'
         }
       ]
     }
@@ -62,6 +62,7 @@ export default class Home extends Component {
               frequency: element[1].dividends[0].frequency
             })
           }
+          console.log(formattedArry)
         })
     }
   }
@@ -84,7 +85,7 @@ export default class Home extends Component {
     const value = evt.target.value.toLowerCase()
     this.setState({
       ...this.state,
-      [evt.target.name]: value
+      [evt.target.name]: `${value}`
     })
   }
 
