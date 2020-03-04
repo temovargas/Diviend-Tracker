@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import { formatDividend } from '../Util/herlper'
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
@@ -29,6 +31,38 @@ export default class Home extends Component {
           avgPricePaid: 145
         }
       ]
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.holdings.length > 0) {
+      const companies = this.state.holdings.map(company => {
+        return company.ticker
+      })
+
+      const companiesString = companies.toString()
+      axios
+        .get(
+          `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${companiesString}&types=dividends&range=1y&token=${process.env.REACT_APP_IXE_API_KEY}`
+        )
+        .then(dividends => {
+          /* I needed to format the retured object
+           so I can read it better, and I don't need 
+           all the infomation
+          */
+          const data = Object.entries(dividends.data)
+          const formattedArry = []
+          // format object
+          for (const key in data) {
+            const element = data[key]
+            // push to new array
+            formattedArry.push({
+              ticker: element[0],
+              dividend: element[1].dividends[0].amount,
+              frequency: element[1].dividends[0].frequency
+            })
+          }
+        })
     }
   }
 
