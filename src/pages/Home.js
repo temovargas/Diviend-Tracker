@@ -18,17 +18,26 @@ export default class Home extends Component {
         {
           ticker: 'CCI',
           shares: '4',
-          avgPricePaid: '145'
+          avgPricePaid: '145.32',
+          lastDividend: '',
+          frequency: '',
+          yearlyDividend: ''
         },
         {
           ticker: 'T',
           shares: '4',
-          avgPricePaid: '145'
+          avgPricePaid: '145',
+          lastDividend: '',
+          frequency: '',
+          yearlyDividend: ''
         },
         {
           ticker: 'O',
           shares: '4',
-          avgPricePaid: '145'
+          avgPricePaid: '145',
+          lastDividend: '',
+          frequency: '',
+          yearlyDividend: ''
         }
       ]
     }
@@ -46,7 +55,7 @@ export default class Home extends Component {
         )
         .then(dividends => {
           /* I needed to format the retured object
-           so I can read it better, and I don't need 
+           so I can read it better, and I don't need
            all the infomation
           */
           const data = Object.entries(dividends.data)
@@ -70,11 +79,14 @@ export default class Home extends Component {
           // TESTING FORM
           let newState = []
 
-          formattedArry.map((formattedArray, index) => {
-            currentHoldings.map((holdingArray, index) => {
-              if (formattedArray.ticker == holdingArray.ticker) {
+          formattedArry.map(formattedArray => {
+            currentHoldings.map(holdingArray => {
+              if (formattedArray.ticker === holdingArray.ticker) {
                 console.log(formattedArray.ticker, holdingArray.ticker)
-                newState.push({ ...formattedArray, ...holdingArray })
+                newState.push({
+                  ...holdingArray,
+                  ...formattedArray
+                })
               }
             })
           })
