@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import { calcDiviendPay } from '../utils/herlper'
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
@@ -16,17 +16,17 @@ export default class Home extends Component {
       avgPricePaidInput: '',
       holdings: [
         {
-          ticker: 'cci',
+          ticker: 'CCI',
           shares: '4',
           avgPricePaid: '145'
         },
         {
-          ticker: 'o',
+          ticker: 'T',
           shares: '4',
           avgPricePaid: '145'
         },
         {
-          ticker: 't',
+          ticker: 'O',
           shares: '4',
           avgPricePaid: '145'
         }
@@ -39,7 +39,6 @@ export default class Home extends Component {
       const companies = this.state.holdings.map(company => {
         return company.ticker
       })
-
       const companiesString = companies.toString()
       axios
         .get(
@@ -55,14 +54,33 @@ export default class Home extends Component {
           // format object
           for (const key in data) {
             const element = data[key]
+            const lastDividend = element[1].dividends[0].amount
+            const frequency = element[1].dividends[0].frequency
+            const yearlyDividend = calcDiviendPay(lastDividend, frequency)
             // push to new array
             formattedArry.push({
               ticker: element[0],
-              dividend: element[1].dividends[0].amount,
-              frequency: element[1].dividends[0].frequency
+              lastDividend,
+              frequency,
+              yearlyDividend
             })
           }
-          console.log(formattedArry)
+          // update holding with lastDividend,frequency,yearlyDividend
+          let currentHoldings = this.state.holdings
+          // TESTING FORM
+          let newState = []
+
+          formattedArry.map((formattedArray, index) => {
+            currentHoldings.map((holdingArray, index) => {
+              if (formattedArray.ticker == holdingArray.ticker) {
+                console.log(formattedArray.ticker, holdingArray.ticker)
+                newState.push({ ...formattedArray, ...holdingArray })
+              }
+            })
+          })
+          this.setState({ holdings: [...newState] }, () => {
+            console.log('FINAL STATE:', this.state.holdings)
+          })
         })
     }
   }
@@ -82,7 +100,7 @@ export default class Home extends Component {
   }
 
   handleInputChange = evt => {
-    const value = evt.target.value.toLowerCase()
+    const value = evt.target.value.toUpperCase()
     this.setState({
       ...this.state,
       [evt.target.name]: `${value}`
@@ -98,10 +116,14 @@ export default class Home extends Component {
       shares: sharesInput,
       avgPricePaid: avgPricePaidInput
     }
+    // reset inputs,
+    // hide modal
+    // add holdings
     this.setState({
-      tickerInput,
-      sharesInput,
-      avgPricePaidInput,
+      showModal: false,
+      tickerInput: '',
+      sharesInput: '',
+      avgPricePaidInput: '',
       holdings: [...this.state.holdings, newHolding]
     })
   }
