@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { calcDiviendPay } from '../utils/herlper'
+import { getHoldingsData } from '../utils/herlper'
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
@@ -44,57 +44,9 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    if (this.state.holdings.length > 0) {
-      const companies = this.state.holdings.map(company => {
-        return company.ticker
-      })
-      const companiesString = companies.toString()
-      axios
-        .get(
-          `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${companiesString}&types=dividends&range=1y&token=${process.env.REACT_APP_IXE_API_KEY}`
-        )
-        .then(dividends => {
-          /* I needed to format the retured object
-           so I can read it better, and I don't need
-           all the infomation
-          */
-          const data = Object.entries(dividends.data)
-          const formattedArry = []
-          // format object
-          for (const key in data) {
-            const element = data[key]
-            const lastDividend = element[1].dividends[0].amount
-            const frequency = element[1].dividends[0].frequency
-            const yearlyDividend = calcDiviendPay(lastDividend, frequency)
-            // push to new array
-            formattedArry.push({
-              ticker: element[0],
-              lastDividend,
-              frequency,
-              yearlyDividend
-            })
-          }
-          // update holding with lastDividend,frequency,yearlyDividend
-          let currentHoldings = this.state.holdings
-          // TESTING FORM
-          let newState = []
-
-          formattedArry.map(formattedArray => {
-            currentHoldings.map(holdingArray => {
-              if (formattedArray.ticker === holdingArray.ticker) {
-                console.log(formattedArray.ticker, holdingArray.ticker)
-                newState.push({
-                  ...holdingArray,
-                  ...formattedArray
-                })
-              }
-            })
-          })
-          this.setState({ holdings: [...newState] }, () => {
-            console.log('FINAL STATE:', this.state.holdings)
-          })
-        })
-    }
+    getHoldingsData(this.state.holdings).then(data => {
+      this.setState({ holdings: [...data] })
+    })
   }
 
   toggleModal = () => {
