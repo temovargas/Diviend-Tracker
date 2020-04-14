@@ -1,0 +1,76 @@
+/* Colors */
+html {
+  --inActiveLink: #999ba2;
+  --activeLink: #090f34;
+  font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-color: #f3f8fb;
+  color: #090f34;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--inActiveLink);
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+a:hover {
+  color: #090f34;
+  transition: all 0.2s ease-in-out;
+}
+.active {
+  color: var(--activeLink);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8d8d8d;
+  background: #fff;
+}
+
+.nav .heading {
+  font-size: 10px;
+  margin-right: auto;
+}
+/* .nav .heading a {
+  padding: 0;
+} */
+
+.nav a:not(:first-child) {
+  margin-left: auto;
+  padding: 1.3rem 0.5rem;
+}
+
+/* Holdings Table */
+.holdings__table {
+  text-align: center;
+}
+
+/* Help Wrapper */
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
