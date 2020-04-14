@@ -4,8 +4,8 @@ import currency from 'currency.js'
 
 export default function HoldingsList(props) {
   return (
-    <div>
-      <table>
+    <div className="holdings__wrapper">
+      <table className="holdings__table">
         <tbody>
           <tr>
             <th>Ticker</th>

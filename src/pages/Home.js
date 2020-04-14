@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import currency from 'currency.js'
-import axios from 'axios'
 import { getHoldingsData } from '../utils/herlper'
 import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
@@ -128,7 +127,7 @@ export default class Home extends Component {
 
     return (
       <div>
-        <h2>My Porfolio</h2>
+        <h2 className="profolio_name">My Porfolio</h2>
         {showModal ? (
           <Modal>
             <FormContainer className="holding_form">
