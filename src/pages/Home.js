@@ -126,7 +126,7 @@ export default class Home extends Component {
     const { showModal } = this.state
 
     return (
-      <div>
+      <>
         <h2 className="profolio_name">My Porfolio</h2>
         {showModal ? (
           <Modal>
@@ -161,7 +161,7 @@ export default class Home extends Component {
         ) : null}
         {this.handleHoldingsRender()}
         <button onClick={this.toggleModal}>Add holdings</button>
-      </div>
+      </>
     )
   }
 }

@@ -15,15 +15,17 @@ function App() {
         </header>
         {/* Routes */}
         <Switch>
-          <Route exact path="/" to="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/stocksearch">
-            <StockSearch />
-          </Route>
+          <div className="wrapper">
+            <Route exact path="/" to="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/stocksearch">
+              <StockSearch />
+            </Route>
+          </div>
         </Switch>
       </Router>
     </div>
