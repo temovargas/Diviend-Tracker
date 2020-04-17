@@ -2,7 +2,6 @@
 html {
   --inActiveLink: #999ba2;
   --activeLink: #090f34;
-  font-size: 16px;
 }
 
 *,
@@ -12,19 +11,15 @@ html {
   margin: 0;
   padding: 0;
 }
-
-html {
+/* Basic styles */
+body {
+  background-color: #f3f8fb;
+  color: #090f34;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
-
-body {
-  background-color: #f3f8fb;
-  color: #090f34;
-}
-
-li {
+ul {
   list-style: none;
 }
 
@@ -32,7 +27,6 @@ a {
   color: var(--inActiveLink);
   display: inline-block;
   text-decoration: none;
-  font-size: 0.9rem;
 }
 a:hover {
   color: #090f34;
@@ -41,26 +35,27 @@ a:hover {
 .active {
   color: var(--activeLink);
 }
-
 /* Nav */
-.nav {
-  display: flex;
-  align-items: center;
+nav {
   border-bottom: 1px solid #8d8d8d;
   background: #fff;
 }
-
+.nav {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
 .nav .heading {
-  font-size: 10px;
+  padding: 1.1rem;
+}
+.nav a {
+  font-weight: 600;
+}
+.nav li:first-child {
   margin-right: auto;
 }
-/* .nav .heading a {
-  padding: 0;
-} */
-
-.nav a:not(:first-child) {
-  margin-left: auto;
-  padding: 1.3rem 0.5rem;
+.nav li:nth-child(n + 2) a {
+  padding: 1.5rem;
 }
 
 /* Holdings Table */
@@ -68,7 +63,7 @@ a:hover {
   text-align: center;
 }
 
-/* Help Wrapper */
+/* Wrapper */
 .wrapper {
   max-width: 1440px;
   margin: 0 auto;

@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 const Nav = () => (
   <nav>
-    <div className="wrapper nav">
-      <li className="heading">
-        <NavLink to="/">
+    <ul className="wrapper nav">
+      <li>
+        <NavLink className="heading" to="/">
           <h1>Dividend</h1>
         </NavLink>
       </li>
@@ -18,7 +18,7 @@ const Nav = () => (
       <li>
         <NavLink to="/about">About</NavLink>
       </li>
-    </div>
+    </ul>
   </nav>
 )
 
