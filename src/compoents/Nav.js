@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
 const Nav = () => (
   <nav>
+    <div className="ham">X</div>
     <ul className="wrapper nav">
       <li>
         <NavLink className="heading" to="/">
