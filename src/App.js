@@ -14,8 +14,8 @@ function App() {
           <Nav />
         </header>
         {/* Routes */}
-        <Switch>
-          <div className="wrapper">
+        <div className="wrapper">
+          <Switch>
             <Route exact path="/" to="/">
               <Home />
             </Route>
@@ -25,8 +25,8 @@ function App() {
             <Route path="/stocksearch">
               <StockSearch />
             </Route>
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </Router>
     </div>
   )
