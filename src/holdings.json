@@ -1,0 +1,26 @@
+[
+  {
+    "ticker": "QQQ",
+    "shares": "12.11",
+    "avgPricePaid": "218",
+    "lastDividend": "",
+    "frequency": "",
+    "yearlyDividend": ""
+  },
+  {
+    "ticker": "CCI",
+    "shares": "5.3",
+    "avgPricePaid": "151",
+    "lastDividend": "",
+    "frequency": "",
+    "yearlyDividend": ""
+  },
+  {
+    "ticker": "JPM",
+    "shares": "3.7",
+    "avgPricePaid": "96",
+    "lastDividend": "",
+    "frequency": "",
+    "yearlyDividend": ""
+  }
+]

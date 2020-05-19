@@ -5,6 +5,9 @@ import FormContainer from '../compoents/FormContainer'
 import Input from '../compoents/Input'
 import Modal from '../compoents/Modal'
 import HoldingsList from '../compoents/HoldingsList'
+
+import holdingData from '../holdings.json'
+
 export default class Home extends Component {
   constructor(props) {
     super(props)
@@ -14,38 +17,17 @@ export default class Home extends Component {
       tickerInput: '',
       sharesInput: '',
       avgPricePaidInput: '',
-      holdings: [
-        {
-          ticker: 'CCI',
-          shares: '4',
-          avgPricePaid: '145.32',
-          lastDividend: '',
-          frequency: '',
-          yearlyDividend: ''
-        },
-        {
-          ticker: 'T',
-          shares: '4',
-          avgPricePaid: '30',
-          lastDividend: '',
-          frequency: '',
-          yearlyDividend: ''
-        },
-        {
-          ticker: 'O',
-          shares: '4',
-          avgPricePaid: '145',
-          lastDividend: '',
-          frequency: '',
-          yearlyDividend: ''
-        }
-      ]
+      holdings: []
     }
   }
 
   componentDidMount() {
-    getHoldingsData(this.state.holdings).then(data => {
-      this.setState({ holdings: [...data] })
+    // 1. load data from the json file
+    this.setState({ holdings: holdingData }, () => {
+      // 2. get data for each company from the api
+      getHoldingsData(this.state.holdings).then(data => {
+        this.setState({ holdings: [...data] })
+      })
     })
   }
 
