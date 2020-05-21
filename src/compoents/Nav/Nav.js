@@ -8,7 +8,7 @@ const Nav = () => {
 
   return (
     <nav className="nav nav_container">
-      <label for="nav__menu" className="nav__toggle">
+      <label htmlFor="nav__menu" className="nav__toggle">
         <span className="nav__menu__bar"></span>
         <span className="nav__menu__bar"></span>
         <span className="nav__menu__bar"></span>
