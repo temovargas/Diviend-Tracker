@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import currency from 'currency.js'
-import { getHoldingsData } from '../utils/herlper'
-import FormContainer from '../compoents/FormContainer'
-import Input from '../compoents/Input'
-import Modal from '../compoents/Modal'
-import HoldingsList from '../compoents/HoldingsList'
+import { getHoldingsData } from '../../utils/herlper'
+import FormContainer from '../../compoents/FormContainer'
+import Input from '../../compoents/Input/Input'
+import Modal from '../../compoents/Modal'
+import HoldingsList from '../../compoents/HoldingsList/HoldingsList'
 
-import holdingData from '../holdings.json'
+import holdingData from '../../holdings.json'
+
+import './Home.css'
 
 export default class Home extends Component {
   constructor(props) {
@@ -100,6 +102,8 @@ export default class Home extends Component {
           avgPricePaidInput: '',
           holdings: [...this.state.holdings, newHolding]
         })
+
+        // TODO
       }
     })
   }
@@ -112,8 +116,9 @@ export default class Home extends Component {
         <h2 className="profolio_name">My Porfolio</h2>
         {showModal ? (
           <Modal>
-            <FormContainer className="holding_form">
+            <FormContainer className={'holding_form'}>
               <Input
+                className="holding_form_input"
                 name="tickerInput"
                 title="Ticker"
                 type="text"
@@ -121,6 +126,7 @@ export default class Home extends Component {
                 handleChange={this.handleInputChange}
               />
               <Input
+                className="holding_form_input"
                 name="sharesInput"
                 title="Shares"
                 type="text"
@@ -128,21 +134,32 @@ export default class Home extends Component {
                 handleChange={this.handleInputChange}
               />
               <Input
+                className="holding_form_input"
                 name="avgPricePaidInput"
                 title="Avg Prigice Paid"
                 type="text"
                 placeholder="Price"
                 handleChange={this.handleInputChange}
               />
-              <button type="submit" onClick={this.handleAddHolding}>
-                Add
-              </button>
-              <button onClick={this.toggleModal}>Cancel</button>
+              <div className="buttons">
+                <button
+                  type="submit"
+                  className="btn btn__confirm"
+                  onClick={this.handleAddHolding}
+                >
+                  Add
+                </button>
+                <button className=" btn btn__alert" onClick={this.toggleModal}>
+                  Cancel
+                </button>
+              </div>
             </FormContainer>
           </Modal>
         ) : null}
         {this.handleHoldingsRender()}
-        <button onClick={this.toggleModal}>Add holdings</button>
+        <button className={' btn btn__cta'} onClick={this.toggleModal}>
+          Add holdings
+        </button>
       </>
     )
   }
