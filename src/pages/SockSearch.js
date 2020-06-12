@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 // import components
 import NewsList from '../compoents/NewsList'
+import Input from '../compoents/Input/Input'
+import FormContainer from '../compoents/FormContainer'
 
 class SockSearch extends Component {
   state = { inputText: '', company: {}, news: [], quote: {} }
@@ -22,27 +24,33 @@ class SockSearch extends Component {
   }
 
   handleChange = e => {
+    const value = e.target.value.toUpperCase()
     this.setState({
       ...this.state,
-      inputText: e.target.value
+      inputText: value
     })
   }
 
   render() {
     return (
       <section className="stock_search">
-        <form onSubmit={this.fetchData}>
-          <input
-            className="stock_search_input"
-            value={this.state.inputText}
-            onChange={this.handleChange}
+        <FormContainer onSubmit={this.fetchData}>
+          <Input
+            name="Ticker Name"
+            title="Enter ticker"
             type="text"
+            handleChange={this.handleChange}
+            value={this.state.inputText}
             placeholder="Enter Stock Ticker"
           />
-          <button type="submit" disabled={!this.state.inputText}>
+          <button
+            className="btn btn__confirm {"
+            type="submit"
+            disabled={!this.state.inputText}
+          >
             Search
           </button>
-        </form>
+        </FormContainer>
         <NewsList news={this.state.news} />
       </section>
     )
