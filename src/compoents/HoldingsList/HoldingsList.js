@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import currency from 'currency.js'
+import './HoldingList.css'
 
 export default function HoldingsList(props) {
   return (
@@ -28,7 +29,7 @@ export default function HoldingsList(props) {
 
             return (
               <tr key={uuid()}>
-                <td>{ticker}</td>
+                <td className="holdings__table__ticker">{ticker}</td>
                 <td>{shares}</td>
                 <td>{avgPricePaid}</td>
                 <td>
@@ -36,7 +37,7 @@ export default function HoldingsList(props) {
                     .multiply(shares)
                     .format(true)}
                 </td>
-                <td>
+                <td className="holdings__table__income--positive">
                   {currency(shares)
                     .multiply(yearlyDividend)
                     .format(true)}
