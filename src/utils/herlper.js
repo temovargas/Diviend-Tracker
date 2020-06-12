@@ -53,7 +53,6 @@ export let getHoldingsData = async holdings => {
     formattedArry.map(formattedArray => {
       currentHoldings.map(holdingArray => {
         if (formattedArray.ticker === holdingArray.ticker) {
-          console.log(formattedArray.ticker, holdingArray.ticker)
           newState.push({
             ...holdingArray,
             ...formattedArray
