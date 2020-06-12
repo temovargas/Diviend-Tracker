@@ -1,0 +1,19 @@
+.holdings__table {
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  margin: 3rem 0;
+  border-collapse: collapse;
+}
+.holdings__table td,
+.holdings__table th {
+  border-bottom: 1px solid #97a6b3;
+  padding: 1.2rem 2rem;
+}
+.holdings__table__ticker {
+  font-weight: 600;
+}
+
+.holdings__table__income--positive {
+  color: #009f4b;
+}

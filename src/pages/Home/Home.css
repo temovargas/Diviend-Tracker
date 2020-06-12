@@ -1,0 +1,32 @@
+.profolio_name {
+  font-size: 3.5rem;
+  margin: 6rem 0 3rem;
+  text-align: center;
+}
+
+.holding_form_input {
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 10rem;
+}
+button:first-of-type {
+  margin-right: 1rem;
+}
+
+.holding_form {
+  background: #fff;
+  z-index: 5;
+  position: absolute;
+
+  top: 0%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}

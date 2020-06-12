@@ -11,3 +11,31 @@ a {
   text-decoration: none;
   display: inline-block;
 }
+
+.wrapper {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 1.2rem;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 1.5rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  max-width: 120px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.btn__confirm {
+  background-color: #008fff;
+}
+
+.btn__alert {
+  background-color: #ff4f59;
+}
+
+.btn__cta {
+  background: #008fff;
+}
