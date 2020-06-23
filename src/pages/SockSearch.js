@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 // import components
 import NewsList from '../compoents/NewsList'
 import Input from '../compoents/Input/Input'
 import FormContainer from '../compoents/FormContainer'
+import { fetchStockDataBatch } from '../utils/herlper'
 
 class SockSearch extends Component {
   state = { inputText: '', company: {}, news: [], quote: {} }
 
-  fetchData = event => {
+  fetchData = async event => {
     event.preventDefault()
 
-    axios
-      .get(
-        `https://cloud.iexapis.com/stable/stock/${this.state.inputText}/batch?types=quote,company,news&token=${process.env.REACT_APP_IXE_API_KEY}`
-      )
-      .then(res => {
-        console.log(res.data)
-        this.setState({
-          ...res.data
-        })
-      })
+    const ticker = this.state.inputText
+    const stockData = await fetchStockDataBatch(ticker)
+
+    this.setState({
+      ...stockData
+    })
   }
 
   handleChange = e => {
