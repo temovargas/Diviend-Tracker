@@ -2,6 +2,20 @@ import currency from 'currency.js'
 import axios from 'axios'
 // calc the yearly dividend pay
 // (lastDividendPayed * frequency)  = yearlyDividendPay
+
+/**
+ * Calculates the yealy diviend using the
+ * last dividend payed and the frequency
+ * at which the stock pays.
+ *
+ * @param {string} lastDividendPayed - last dividend payed
+ * @param {string} frequency - annual, quarterly, monthly
+ *
+ * @return {string} a string of the total amount payed
+ *
+ * @example
+ *     calcDiviendPay('.34', 'annual')
+ */
 export const calcDiviendPay = (lastDividendPayed, frequency) => {
   let yearlyDividendPay = currency(lastDividendPayed)
   if (frequency === 'annual') {
@@ -14,7 +28,7 @@ export const calcDiviendPay = (lastDividendPayed, frequency) => {
   return yearlyDividendPay.format()
 }
 
-export let getHoldingsData = async holdings => {
+export const getHoldingsData = async holdings => {
   // get all tickers
   if (holdings.length > 0) {
     const companies = holdings.map(company => {
@@ -63,4 +77,20 @@ export let getHoldingsData = async holdings => {
     // return new state
     return newState
   }
+}
+/**
+ * Gets quote, company and news for the ticker
+ *
+ * @param {string} ticker - ticker symbol
+ * @return {array} an array with all the stock data
+ *
+ * @example
+ *     fetchStockData('T')
+ *     fetchStockData('t')
+ */
+export async function fetchStockDataBatch(ticker) {
+  const response = await axios.get(
+    `https://cloud.iexapis.com/stable/stock/${ticker}/batch?types=quote,company,news&token=${process.env.REACT_APP_IXE_API_KEY}`
+  )
+  return await response.data
 }
