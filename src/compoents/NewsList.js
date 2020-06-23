@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import uuid from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid'
 
 // import components
 import News from './News'
@@ -11,7 +11,7 @@ class NewsList extends Component {
 
     const renderNews = newsArray.map(artical => (
       <News
-        key={uuid()}
+        key={uuidv4()}
         headline={artical.headline}
         source={artical.source}
         summary={artical.summary}
