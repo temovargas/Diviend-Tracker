@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import currency from 'currency.js'
-import { getHoldingsData } from '../../utils/herlper'
+
+import axios from 'axios'
+import { getHoldingsData, batchformatArary } from '../../utils/herlper'
 import FormContainer from '../../compoents/FormContainer'
 import Input from '../../compoents/Input/Input'
 import Modal from '../../compoents/Modal'
@@ -21,6 +22,7 @@ export default class Home extends Component {
       avgPricePaidInput: '',
       holdings: []
     }
+    this.handleAddNewHolding = this.handleAddNewHolding.bind(this)
   }
 
   componentDidMount() {
@@ -55,55 +57,33 @@ export default class Home extends Component {
     })
   }
 
-  handleAddHolding = evt => {
-    evt.preventDefault()
-    const { tickerInput, sharesInput, avgPricePaidInput, holdings } = this.state
-    // get all companines the user ownes
-    holdings.map((company, id) => {
-      if (company.ticker === tickerInput) {
-        const arrayItiemId = id
+  // call to handle a signle holding.
+  async handleAddNewHolding(event) {
+    event.preventDefault()
+    const { tickerInput, sharesInput, avgPricePaidInput } = this.state
 
-        // add all the shares
-        const updatedShares = currency(company.shares)
-          .add(sharesInput)
-          .format()
-        // add all the shares
-        // MIGHT REMOVE
-        const updatedAvgPricePaid = currency(company.avgPricePaid)
-          .add(avgPricePaidInput)
-          .format()
+    // get stock data
+    const response = await axios.get(
+      `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${tickerInput}&types=dividends&range=1y&token=${process.env.REACT_APP_IXE_API_KEY}`
+    )
 
-        const updatedArray = {
-          ...company,
-          shares: updatedShares,
-          avgPricePaid: updatedAvgPricePaid
-        }
-        // remove current company from array
-        holdings.splice(arrayItiemId, 1)
-        // push updated company array
-        holdings.push(updatedArray)
+    // format the data that is returned
+    const formattedNewStock = batchformatArary(response)[0]
+    // format the whole object with every data set needed
+    const fomattedStockObject = {
+      ...formattedNewStock,
+      shares: sharesInput,
+      avgPricePaid: avgPricePaidInput
+    }
 
-        this.setState({
-          holdings: holdings
-        })
-      } else {
-        const newHolding = {
-          ticker: tickerInput,
-          shares: sharesInput,
-          avgPricePaid: avgPricePaidInput
-        }
-        // reset inputs,
-        // hide modal
-        // add holdings
-        this.setState({
-          showModal: false,
-          tickerInput: '',
-          sharesInput: '',
-          avgPricePaidInput: '',
-          holdings: [...this.state.holdings, newHolding]
-        })
-
-        // TODO
+    // set state
+    this.setState(state => {
+      return {
+        showModal: false,
+        tickerInput: '',
+        sharesInput: '',
+        avgPricePaidInput: '',
+        holdings: [...state.holdings, fomattedStockObject]
       }
     })
   }
@@ -145,7 +125,7 @@ export default class Home extends Component {
                 <button
                   type="submit"
                   className="btn btn__confirm"
-                  onClick={this.handleAddHolding}
+                  onClick={this.handleAddNewHolding}
                 >
                   Add
                 </button>
