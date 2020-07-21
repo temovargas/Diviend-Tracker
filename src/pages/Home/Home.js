@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 import { getHoldingsData, batchformatArary } from '../../utils/herlper'
-import FormContainer from '../../compoents/FormContainer'
+import FormContainer from '../../compoents/FormContainer/FormContainer'
 import Input from '../../compoents/Input/Input'
 import Modal from '../../compoents/Modal'
 import HoldingsList from '../../compoents/HoldingsList/HoldingsList'
