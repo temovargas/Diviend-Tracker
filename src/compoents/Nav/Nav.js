@@ -8,18 +8,23 @@ const Nav = () => {
 
   return (
     <nav className="nav nav_container">
-      <label htmlFor="nav__menu" className="nav__toggle">
+      <label
+        htmlFor="nav__menu"
+        className="nav__toggle"
+        onClick={() => setToggle(!toggle)}
+      >
         <span className="nav__menu__bar"></span>
         <span className="nav__menu__bar"></span>
         <span className="nav__menu__bar"></span>
       </label>
-      <input id="nav__menu" type="checkbox" />
-
       <NavLink className="nav__heading nav__item--left " to="/">
         <h1>Dividend</h1>
       </NavLink>
 
-      <ul className="nav__wrapper">
+      <ul
+        className={`nav__wrapper ${toggle ? 'toggle_nav' : null}`}
+        onClick={() => setToggle(false)}
+      >
         <li className="nav__item ">
           <NavLink className="nav__link" to="/">
             Home

@@ -10,6 +10,7 @@ nav {
   display: flex;
   padding: 0 1em;
 }
+
 .nav__toggle,
 #nav__menu {
   display: none;
@@ -34,6 +35,7 @@ nav {
 .nav__item--left {
   margin-right: auto;
 }
+
 /* mobile styles  */
 @media only screen and (max-width: 768px) {
   nav {
@@ -74,7 +76,9 @@ nav {
     z-index: 1;
     background: tomato;
   }
-  #nav__menu:checked + .nav__heading + .nav__wrapper {
+
+  .toggle_nav {
     height: 100%;
+
   }
 }
