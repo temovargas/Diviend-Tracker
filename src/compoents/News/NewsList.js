@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 // import components
 import News from './News'
+import './NewList.css'
 
 class NewsList extends Component {
   render() {
