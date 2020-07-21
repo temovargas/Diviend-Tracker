@@ -7,7 +7,7 @@ export default function HoldingsList(props) {
   return (
     <>
       <table className="holdings__table">
-        <tbody>
+        <tbody className="holdings__body">
           <tr>
             <th>Ticker</th>
             <th>Shares</th>
