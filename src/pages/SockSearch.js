@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 // import components
-import NewsList from '../compoents/NewsList'
+import NewsList from '../compoents/News/NewsList'
 import Input from '../compoents/Input/Input'
-import FormContainer from '../compoents/FormContainer'
-import { fetchStockDataBatch } from '../utils/herlper'
+import FormContainer from '../compoents/FormContainer/FormContainer'
 
+import axios from 'axios'
 class SockSearch extends Component {
   state = { inputText: '', company: {}, news: [], quote: {} }
 
@@ -12,10 +12,12 @@ class SockSearch extends Component {
     event.preventDefault()
 
     const ticker = this.state.inputText
-    const stockData = await fetchStockDataBatch(ticker)
-
+    const response = axios.get(
+      `https://cloud.iexapis.com/stable/stock/${ticker}/news?&token=${process.env.REACT_APP_IXE_API_KEY}`
+    )
+    const stockData = await response
     this.setState({
-      ...stockData
+      news: [...stockData.data]
     })
   }
 
