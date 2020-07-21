@@ -1,3 +1,10 @@
+:root {
+  --showdow-color: #0949d325;
+  --btn-active: #008fff;
+  --btn-disable: #0381e2;
+  --alert: #ff4f59;
+}
+
 html {
   font-size: 10px;
 }
@@ -6,6 +13,7 @@ body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
+
 a {
   color: black;
   text-decoration: none;
@@ -19,6 +27,10 @@ a {
   margin: 0 auto;
 }
 
+button:disabled {
+  background: var(--btn-active);
+}
+
 .btn {
   padding: 1.5rem 2rem;
   font-size: 1.2rem;
@@ -28,14 +40,15 @@ a {
   letter-spacing: 1px;
   font-weight: 500;
 }
+
 .btn__confirm {
-  background-color: #008fff;
+  background-color: var(--btn-active);
 }
 
 .btn__alert {
-  background-color: #ff4f59;
+  background-color: var(--alert);
 }
 
 .btn__cta {
-  background: #008fff;
+  background: var(--btn-active);
 }
