@@ -1,0 +1,29 @@
+.artical {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem;
+
+  border-radius: 2px;
+}
+
+.artical_link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+
+  display: block;
+
+  border-radius: 2px;
+  transition: 0.2s all;
+  margin-bottom: 10px;
+}
+
+.artical_link:hover {
+  box-shadow: 0px 20px 30px var(--showdow-color);
+}
+
+.artical_data>* {
+  padding: 0.3rem 0;
+}
