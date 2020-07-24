@@ -12,7 +12,9 @@ const News = props => {
           <span className="artical_data_date">{date}</span>
         </div>
         <h3 className="artical_data_headline">{props.headline}</h3>
-        <p className="artical_data_content">{props.summary}</p>
+        <p className="artical_data_content">
+          {props.summary.substr(0, 150)}...
+        </p>
       </div>
     </div>
   )
