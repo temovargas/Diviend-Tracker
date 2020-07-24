@@ -26,17 +26,30 @@ const Nav = () => {
         onClick={() => setToggle(false)}
       >
         <li className="nav__item ">
-          <NavLink className="nav__link" to="/">
+          <NavLink
+            className="nav__link"
+            exact
+            activeClassName="is-active"
+            to="/"
+          >
             Home
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink className="nav__link" to="/stocksearch">
+          <NavLink
+            className="nav__link"
+            activeClassName="is-active"
+            to="/stocksearch"
+          >
             Search Sotck
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink className="nav__link" to="/about">
+          <NavLink
+            className="nav__link"
+            activeClassName="is-active"
+            to="/about"
+          >
             About
           </NavLink>
         </li>
